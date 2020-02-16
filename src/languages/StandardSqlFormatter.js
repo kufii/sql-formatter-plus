@@ -313,6 +313,7 @@ const reservedNewlineWords = [
   'JOIN',
   'LEFT JOIN',
   'LEFT OUTER JOIN',
+  'NATURAL JOIN',
   'OR',
   'OUTER APPLY',
   'OUTER JOIN',
