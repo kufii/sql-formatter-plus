@@ -1,6 +1,7 @@
 import isEmpty from 'lodash/isEmpty';
 import escapeRegExp from 'lodash/escapeRegExp';
 import tokenTypes from './tokenTypes';
+import rewritePattern from 'regexpu-core';
 
 export default class Tokenizer {
   /**
@@ -66,9 +67,13 @@ export default class Tokenizer {
 
   createWordRegex(specialChars = []) {
     return new RegExp(
-      `^([\\p{Alphabetic}\\p{Mark}\\p{Decimal_Number}\\p{Connector_Punctuation}\\p{Join_Control}${specialChars.join(
-        ''
-      )}]+)`,
+      rewritePattern(
+        `^([\\p{Alphabetic}\\p{Mark}\\p{Decimal_Number}\\p{Connector_Punctuation}\\p{Join_Control}${specialChars.join(
+          ''
+        )}]+)`,
+        'u',
+        { unicodePropertyEscape: true }
+      ),
       'u'
     );
   }
