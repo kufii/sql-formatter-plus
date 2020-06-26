@@ -241,4 +241,18 @@ export default class Formatter {
   previousToken(offset = 1) {
     return this.tokens[this.index - offset] || {};
   }
+
+  *tokenLookBack(maxBack = 5) {
+    const index = this.index; // store index in case formatter moves on before exhausted
+    for (let i = 1; i <= maxBack; i++) {
+      yield this.tokens[index - i] || {};
+    }
+  }
+
+  *tokenLookAhead(maxAhead = 5) {
+    const index = this.index; // store index in case formatter moves on before exhausted
+    for (let i = 1; i <= maxAhead; i++) {
+      yield this.tokens[index + i] || {};
+    }
+  }
 }
