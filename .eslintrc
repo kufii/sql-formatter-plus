@@ -1,4 +1,5 @@
 {
+  "parser": "babel-eslint",
   "extends": ["adpyke-es6", "prettier"],
   "parserOptions": {
     "sourceType": "module"
